@@ -26,7 +26,6 @@ public class LoginDAOImpl implements LoginDAO {
 
     @Override
     public String Login(TbLogininfo p) {
-        System.out.println(p.getName());
         String flag = "";
         try {
             Session session = this.sessionFactory.getCurrentSession();
@@ -36,10 +35,10 @@ public class LoginDAOImpl implements LoginDAO {
                 while (i.hasNext()) {
                     TbLogininfo info = (TbLogininfo) i.next();
                     if (info.getName().equals(p.getName()) && info.getPassword().equals(p.getPassword())) {
-                        flag = "登录成功";
+                        flag = "success";
                         break;
                     } else {
-                        flag = "账户密码错误";
+                        flag = "error";
                     }
                 }
             }
@@ -48,7 +47,7 @@ public class LoginDAOImpl implements LoginDAO {
             return flag;
         } catch (HibernateException e) {
             e.printStackTrace();
-            return "账户密码错误";
+            return "error";
         }
     }
 }
