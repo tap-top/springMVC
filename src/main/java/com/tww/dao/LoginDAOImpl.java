@@ -26,11 +26,11 @@ public class LoginDAOImpl implements LoginDAO {
 
     @Override
     public String Login(TbLogininfo p) {
+        System.out.println(p.getName());
         String flag = "";
         try {
             Session session = this.sessionFactory.getCurrentSession();
             List list = session.createQuery("from TbLogininfo").list();
-//            Transaction tx = session.beginTransaction();
             if (list != null) {
                 Iterator i = list.iterator();
                 while (i.hasNext()) {
@@ -39,16 +39,16 @@ public class LoginDAOImpl implements LoginDAO {
                         flag = "登录成功";
                         break;
                     } else {
-                        flag = "登录失败";
+                        flag = "账户密码错误";
                     }
                 }
             }
-//            tx.commit();
             session.clear();
+            System.out.println(flag);
             return flag;
         } catch (HibernateException e) {
             e.printStackTrace();
-            return "账户或密码错误";
+            return "账户密码错误";
         }
     }
 }

@@ -4,12 +4,10 @@ import com.tww.dao.StudentDAO;
 import com.tww.model.Student;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-	
 	private StudentDAO studentDAO;
 
     public StudentDAO getStudentDAO() {
@@ -49,5 +47,4 @@ public class StudentServiceImpl implements StudentService {
 	public void removeStudent(int id) {
 		this.studentDAO.removeStudent(id);
 	}
-
 }

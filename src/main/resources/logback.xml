@@ -8,6 +8,7 @@
   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
      <!--<file>/opt/web/spring-mvc-test/log/activity0_0.log</file>-->
      <file>activity0_0.log</file>
+    <param name="Encoding" value="UTF-8" />
     <append>true</append>
     <encoder>
       <pattern>%d{YYYY/MM/dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
